@@ -1,8 +1,9 @@
-package com.zengjianxiong.library
+package com.zengjianxiong.log.log
 
 import android.content.Context
 
 import android.os.Environment
+import com.zengjianxiong.log.BuildConfig
 
 import timber.log.Timber
 import java.io.File

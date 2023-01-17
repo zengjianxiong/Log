@@ -9,7 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
-import com.zengjianxiong.library.AppLogUtils
+import com.zengjianxiong.log.log.AppLogUtils
 import com.zengjianxiong.log.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -1,10 +1,6 @@
-package com.zengjianxiong.library
+package com.zengjianxiong.log.log
 
 import android.content.Context
-import android.os.Handler
-import android.os.HandlerThread
-import android.os.Looper
-
 import android.util.Log
 import ch.qos.logback.classic.Level
 import ch.qos.logback.classic.LoggerContext
@@ -16,8 +12,8 @@ import ch.qos.logback.core.rolling.TimeBasedRollingPolicy
 import ch.qos.logback.core.util.FileSize
 import ch.qos.logback.core.util.FileSize.*
 import ch.qos.logback.core.util.StatusPrinter
-import com.zengjianxiong.library.AnalyticsManager.Companion.LATEST_LOG_ADDRESS
-import com.zengjianxiong.library.AnalyticsManager.Companion.LOG_PREFIX
+import com.zengjianxiong.log.log.AnalyticsManager.Companion.LATEST_LOG_ADDRESS
+import com.zengjianxiong.log.log.AnalyticsManager.Companion.LOG_PREFIX
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.slf4j.MarkerFactory

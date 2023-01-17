@@ -1,7 +1,7 @@
 package com.zengjianxiong.log
 
 import android.app.Application
-import com.zengjianxiong.library.AnalyticsManager
+import com.zengjianxiong.log.log.AnalyticsManager
 
 class App: Application() {
     override fun onCreate() {

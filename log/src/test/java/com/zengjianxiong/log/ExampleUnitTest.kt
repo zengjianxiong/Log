@@ -1,4 +1,4 @@
-package com.zengjianxiong.library
+package com.zengjianxiong.log
 
 import org.junit.Test
 

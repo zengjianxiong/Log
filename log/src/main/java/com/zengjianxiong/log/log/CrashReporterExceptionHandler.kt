@@ -1,4 +1,4 @@
-package com.zengjianxiong.library
+package com.zengjianxiong.log.log
 
 class CrashReporterExceptionHandler : Thread.UncaughtExceptionHandler {
 

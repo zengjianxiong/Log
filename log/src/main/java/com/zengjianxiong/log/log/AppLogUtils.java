@@ -1,6 +1,4 @@
-package com.zengjianxiong.library;
-
-import android.text.TextUtils;
+package com.zengjianxiong.log.log;
 
 import timber.log.Timber;
 
