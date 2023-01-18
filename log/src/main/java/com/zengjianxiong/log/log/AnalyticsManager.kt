@@ -3,8 +3,6 @@ package com.zengjianxiong.log.log
 import android.content.Context
 
 import android.os.Environment
-import com.zengjianxiong.log.BuildConfig
-
 import timber.log.Timber
 import java.io.File
 
@@ -13,18 +11,19 @@ class AnalyticsManager {
     companion object {
         const val LOG_PREFIX = "log"
         const val LATEST_LOG_ADDRESS = "$LOG_PREFIX-latest.log"
+
         @Volatile
         private var INSTANCE: AnalyticsManager? = null
 
         @JvmStatic
-        fun getInstance(context: Context): AnalyticsManager =
+        fun getInstance(context: Context, debug: Boolean): AnalyticsManager =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: buildInstance(context).also { INSTANCE = it }
+                INSTANCE ?: buildInstance(context, debug).also { INSTANCE = it }
             }
 
-        private fun buildInstance(context: Context): AnalyticsManager {
+        private fun buildInstance(context: Context, debug: Boolean): AnalyticsManager {
             CrashReporterExceptionHandler.init()
-            if (BuildConfig.DEBUG) {
+            if (debug) {
                 Timber.plant(Timber.DebugTree())
                 Timber.plant(FileLoggingTree(context))
             } else {
