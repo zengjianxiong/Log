@@ -1,4 +1,4 @@
-package com.zengjianxiong.log.log;
+package com.zengjianxiong.corelog;
 
 import timber.log.Timber;
 

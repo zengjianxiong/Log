@@ -1,11 +1,14 @@
 package com.zengjianxiong.log
 
 import android.app.Application
-import com.zengjianxiong.log.log.AnalyticsManager
+import com.zengjianxiong.corelog.AnalyticsManager
+import com.zengjianxiong.dblog.DBLogTree
+import com.zengjianxiong.filelog.FileLoggingTree
 
-class App: Application() {
+
+class App : Application() {
     override fun onCreate() {
         super.onCreate()
-        AnalyticsManager.getInstance(this)
+        AnalyticsManager.getInstance(true, tree = DBLogTree(context = this))
     }
 }

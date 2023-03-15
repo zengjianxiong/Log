@@ -14,4 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Log"
 include ':app'
-include ':log'
+include ':FileLog'
+include ':CoreLog'
+include ':DbLog'
