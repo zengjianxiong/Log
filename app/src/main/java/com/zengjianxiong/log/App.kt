@@ -9,6 +9,6 @@ import com.zengjianxiong.filelog.FileLoggingTree
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-        AnalyticsManager.getInstance(true, tree = DBLogTree(context = this))
+        AnalyticsManager.getInstance(true, tree = FileLoggingTree(context = this))
     }
 }

@@ -1,6 +1,7 @@
 package com.zengjianxiong.filelog
 
 import android.content.Context
+import android.os.Looper
 import android.util.Log
 import ch.qos.logback.classic.Level
 import ch.qos.logback.classic.LoggerContext
@@ -16,6 +17,9 @@ import com.zengjianxiong.corelog.AnalyticsManager
 import com.zengjianxiong.corelog.AnalyticsManager.Companion.LATEST_LOG_ADDRESS
 import com.zengjianxiong.corelog.AnalyticsManager.Companion.LOG_PREFIX
 import com.zengjianxiong.corelog.BaseTree
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -93,7 +97,22 @@ class FileLoggingTree(context: Context) : BaseTree(context) {
     }
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-        logToFile(priority, tag ?: "", message)
+
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            val job = MainScope()
+            kotlin.runCatching {
+                job.launch {
+                    logToFile(priority, tag ?: "", message)
+                    job.cancel()
+                }
+            }.onFailure {
+                job.cancel()
+            }
+        } else {
+            logToFile(priority, tag ?: "", message)
+        }
+
+
     }
 }
 
