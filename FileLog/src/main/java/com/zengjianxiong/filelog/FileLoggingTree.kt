@@ -97,22 +97,7 @@ class FileLoggingTree(context: Context) : BaseTree(context) {
     }
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-
-        if (Looper.myLooper() == Looper.getMainLooper()) {
-            val job = MainScope()
-            kotlin.runCatching {
-                job.launch {
-                    logToFile(priority, tag ?: "", message)
-                    job.cancel()
-                }
-            }.onFailure {
-                job.cancel()
-            }
-        } else {
-            logToFile(priority, tag ?: "", message)
-        }
-
-
+        logToFile(priority, tag ?: "", message)
     }
 }
 

@@ -58,4 +58,8 @@ data class Log(
             return simpleDateFormat
         }
     }
+
+    override fun toString(): String {
+        return "Log(id=$id, threadName='$threadName', time='$time', createAt=$createAt, priority='$priority', tag=$tag, message='$message')"
+    }
 }
