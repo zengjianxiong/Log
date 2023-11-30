@@ -8,6 +8,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import java.io.File
 
 
 @Database(
@@ -26,6 +27,13 @@ abstract class LogDataBase : RoomDatabase() {
 
         const val db_name = "log.db"
         fun getDatabase(context: Context): LogDataBase {
+
+            val path = context.applicationInfo.dataDir + "/databases/"
+            val file = File(path)
+            if (!file.exists()) {
+                file.mkdirs()
+            }
+
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context,
